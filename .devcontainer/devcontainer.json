@@ -1,0 +1,41 @@
+{
+    "name": "Notebook Template",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    // "mounts": [
+    //     "source=${localEnv:HOME}/devdata,target=/devdata,type=bind,consistency=delegated"
+    // ],
+    "features": {
+        "python": "3.12"
+    },
+    "postCreateCommand": "bash scripts/devcontainer-setup.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-toolsai.jupyter",
+                "ms-python.black-formatter",
+                "ms-toolsai.jupyter-keymap"
+            ]
+        },
+        "settings": {
+            "python.pythonPath": "/usr/local/bin/python",
+            "python.languageServer": "Pylance",
+            "python.envFile": "${workspaceFolder}/.env",
+            "python.analysis.typeCheckingMode": "basic",
+            "python.analysis.diagnosticMode": "workspace",
+            "python.analysis.exclude": [],
+            "python.testing.pytestArgs": [
+                "tests"
+            ],
+            "[python]": {
+                "editor.defaultFormatter": "ms-python.black-formatter"
+            },
+            "editor.formatOnSave": true,
+            "files.exclude": {
+                "**/__pycache__": true
+            }
+        }
+    }
+}
